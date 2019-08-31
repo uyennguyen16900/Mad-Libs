@@ -11,14 +11,10 @@ jinja_env = jinja2.Environment(
 
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        template_vars = {
-
-        }
         template = jinja_env.get_template('templates/madlibs.html')
         self.response.write(template.render(template_vars))
 
-class MadlibsPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template_vars = {
             'adj1': self.request.get('name'),
             'nationality': self.request.get('nationality'),
@@ -39,4 +35,7 @@ class MadlibsPage(webapp2.RequestHandler):
         }
         template = jinja_env.get_template('templates/story.html')
         self.response.write(template.render(template_vars))
-self.request.get(''),
+
+app = webapp2.WSGIApplication([
+    ('/', MainPage)
+], debug = True)
