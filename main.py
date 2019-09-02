@@ -5,6 +5,7 @@ app = Flask(__name__)
 def madlibs():
     return render_template('madlibs.html')
 
+# For more information about sending data from a textbox into Flask, I read https://stackoverflow.com/questions/12277933/send-data-from-a-textbox-into-flask
 @app.route('/', methods=['POST'])
 def generate_story():
     adj1 = request.form['adj1']
@@ -27,6 +28,5 @@ def generate_story():
 
     return render_template('story.html', adj1=adj1, nationality=nationality, person=person, adverb=adverb, noun1=noun1, adj2=adj2, noun2=noun2, adj3=adj3, adj4=adj4, plural_noun=plural_noun, noun3=noun3, number1=number1, shapes=shapes, food1=food1, food2=food2, verb=verb, number2=number2)
 
-app = webapp2.WSGIApplication([
-    ('/', MainPage)
-], debug = True)
+if __name__ == '__main__ ':
+    app.run(debug = True)

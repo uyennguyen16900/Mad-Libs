@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Uyen's Mad Libs</title>
-    <link rel="stylesheet" href="madlibs.css">
+    <!-- For application not picking up .css file, I read https://stackoverflow.com/questions/22259847/application-not-picking-up-css-file-flask-python -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='style/madlibs.css') }}">
   </head>
   <body>
     <h1>Mad Libs</h1>
