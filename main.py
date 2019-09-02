@@ -16,7 +16,7 @@ class MainPage(webapp2.RequestHandler):
 
     def post(self):
         template_vars = {
-            'adj1': self.request.get('name'),
+            'adj1': self.request.get('adj1'),
             'nationality': self.request.get('nationality'),
             'person': self.request.get('person'),
             'noun1': self.request.get('noun1'),
