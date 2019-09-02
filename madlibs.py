@@ -1,3 +1,4 @@
+# For more information about Flask, I watched the video https://www.youtube.com/watch?v=pJ8V51XJuf0
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
