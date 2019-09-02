@@ -1,40 +1,31 @@
+from flask import Flask, render_template, request
+app = Flask(__name__)
 
+@app.route('/')
+def madlibs():
+    return render_template('madlibs.html')
 
-import webapp2
-import logging
-import jinja2
-import os
+@app.route('/', methods=['POST'])
+def generate_story():
+    adj1 = request.form['adj1']
+    nationality = request.form['nationality']
+    person = request.form['person']
+    adverb = request.form['adverb']
+    noun1 = request.form['noun1']
+    adj2 = request.form['adj2']
+    noun2 = request.form['noun2']
+    adj3 = request.form['adj3']
+    adj4 = request.form['adj4']
+    plural_noun = request.form['plural_noun']
+    noun3 = request.form['noun3']
+    number1 = request.form['number1']
+    shapes = request.form['shapes']
+    food1 = request.form['food1']
+    food2 = request.form['food2']
+    verb = request.form['verb']
+    number2 = request.form['number2']
 
-jinja_env = jinja2.Environment(
-    loader = jinja2.FileSystemLoader(os.path.dirname(__file__))
-)
-
-class MainPage(webapp2.RequestHandler):
-    def get(self):
-        template = jinja_env.get_template('templates/madlibs.html')
-        self.response.write(template.render(template_vars))
-
-    def post(self):
-        template_vars = {
-            'adj1': self.request.get('adj1'),
-            'nationality': self.request.get('nationality'),
-            'person': self.request.get('person'),
-            'noun1': self.request.get('noun1'),
-            'adj2': self.request.get('adj2'),
-            'noun2': self.request.get('noun2'),
-            'adj3': self.request.get('adj3'),
-            'adj4': self.request.get('adj4'),
-            'plural noun': self.request.get('plural_noun'),
-            'noun3': self.request.get('noun3'),
-            'number1': self.request.get('number1'),
-            'shapes': self.request.get('shapes'),
-            'food1': self.request.get('food1'),
-            'food2': self.request.get('food2'),
-            'verb': self.request.get('verb'),
-            'number2': self.request.get('number2'),
-        }
-        template = jinja_env.get_template('templates/story.html')
-        self.response.write(template.render(template_vars))
+    return render_template('story.html', adj1=adj1, nationality=nationality, person=person, adverb=adverb, noun1=noun1, adj2=adj2, noun2=noun2, adj3=adj3, adj4=adj4, plural_noun=plural_noun, noun3=noun3, number1=number1, shapes=shapes, food1=food1, food2=food2, verb=verb, number2=number2)
 
 app = webapp2.WSGIApplication([
     ('/', MainPage)
