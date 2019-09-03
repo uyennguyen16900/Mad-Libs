@@ -11,8 +11,8 @@ def madlibs():
 def generate_story():
     template_vars = {
         'adj1': request.form['adj1'],
-        'nationality': request.form['nationality'],
-        'person': request.form['person'],
+        'nationality': request.form['nationality'].capitalize(),
+        'person': request.form['person'].capitalize(),
         'adverb': request.form['adverb'],
         'noun1': request.form['noun1'],
         'adj2': request.form['adj2'],
